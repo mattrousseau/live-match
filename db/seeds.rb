@@ -56,9 +56,7 @@ puts "created #{baron.name}"
 
 puts "----------------------------"
 
-puts "Creating 3 photos per venue"
-
-puts "Destroying all photos"
+puts "Destroying all Venues photos"
 Venuephoto.destroy_all
 
 puts "Creating Tiger Photos"
@@ -150,3 +148,140 @@ VenuesPhoto.create!(
     venuephoto: lebaron_image_3,
     venue: baron
   )
+
+
+
+
+puts "----------------------------"
+
+puts "Destroying all equipments"
+Venueequipment.destroy_all
+
+puts "Creating 2 Tiger equipments"
+
+tiger_equipment_1 = Venueequipment.new(
+  name: "Pioneer XDJ-1000MK2 platine numérique",
+  description: "La platine numérique XDJ-1000MK2 succède à la XDJ-1000. Cette nouvelle version a été développée juste après la sortie de la Pioneer XDJ-1000. Grâce à quelques mises à jour subtiles, elle est particulièrement compacte et efficace et offre un grand confort d'utilisation. De ce fait, la platine convient non seulement aux débutants mais aussi aux DJs professionnels."
+  )
+tiger_equipment_1_photo_url = "https://static.bax-shop.es/image/product/293823/756190/7f4f5726/450x450/1472112161XDJ-1000MK2_01.png"
+tiger_equipment_1.remote_photo_url = tiger_equipment_1_photo_url
+
+tiger_equipment_1.save!
+puts "created #{tiger_equipment_1.name}"
+
+
+tiger_equipment_2 = Venueequipment.new(
+  name: "Elipson Planet L Blanc laqué",
+  description: "La Planet L marque le renouveau de la sphère Elipson avec un produit haut de gamme à l’esthétique soignée. Fruit de 2 ans d’études, elle exploite les meilleures technologies acoustiques pour un rendu sonore sans compromis. Equipée d’un haut-parleur coaxial 2 voies, elle offre le meilleur de la haute-fidélité avec élégance et design."
+  )
+tiger_equipment_2_photo_url = "https://www.homecinesolutions.fr/a/imaj_picture_m2x/2016-12/elipson-planet-m-blanc-52321-m2x-qEWChPXnUGPigmeA9D9Dew.jpg"
+tiger_equipment_2.remote_photo_url = tiger_equipment_2_photo_url
+
+tiger_equipment_2.save!
+puts "created #{tiger_equipment_2.name}"
+
+
+puts "Creating 2 Le Baron equipments"
+
+baron_equipment_1 = Venueequipment.new(
+  name: "Pioneer XDJ-1000MK2 platine numérique",
+  description: "La platine numérique XDJ-1000MK2 succède à la XDJ-1000. Cette nouvelle version a été développée juste après la sortie de la Pioneer XDJ-1000. Grâce à quelques mises à jour subtiles, elle est particulièrement compacte et efficace et offre un grand confort d'utilisation. De ce fait, la platine convient non seulement aux débutants mais aussi aux DJs professionnels."
+  )
+baron_equipment_1_photo_url = "https://static.bax-shop.es/image/product/293823/756190/7f4f5726/450x450/1472112161XDJ-1000MK2_01.png"
+baron_equipment_1.remote_photo_url = baron_equipment_1_photo_url
+
+baron_equipment_1.save!
+puts "created #{baron_equipment_1.name}"
+
+
+baron_equipment_2 = Venueequipment.new(
+  name: "Elipson Planet L Blanc laqué",
+  description: "La Planet L marque le renouveau de la sphère Elipson avec un produit haut de gamme à l’esthétique soignée. Fruit de 2 ans d’études, elle exploite les meilleures technologies acoustiques pour un rendu sonore sans compromis. Equipée d’un haut-parleur coaxial 2 voies, elle offre le meilleur de la haute-fidélité avec élégance et design."
+  )
+baron_equipment_2_photo_url = "https://www.homecinesolutions.fr/a/imaj_picture_m2x/2016-12/elipson-planet-m-blanc-52321-m2x-qEWChPXnUGPigmeA9D9Dew.jpg"
+baron_equipment_2.remote_photo_url = baron_equipment_2_photo_url
+
+baron_equipment_2.save!
+puts "created #{baron_equipment_2.name}"
+
+
+
+puts "----------------------------"
+
+puts "Linking equipments to venues"
+
+puts "Linking Tiger equipments"
+
+VenuesEquipment.create!(
+    venueequipment: tiger_equipment_1,
+    venue: tiger
+  )
+
+VenuesEquipment.create!(
+    venueequipment: tiger_equipment_2,
+    venue: tiger
+  )
+
+
+puts "Linking Le Baron equipments"
+
+VenuesEquipment.create!(
+    venueequipment: baron_equipment_1,
+    venue: baron
+  )
+
+VenuesEquipment.create!(
+    venueequipment: baron_equipment_2,
+    venue: baron
+  )
+
+
+
+puts "----------------------------"
+
+puts "Destroying all djs"
+Dj.destroy_all
+
+puts "Creating 4 Djs"
+
+
+mroizo = Dj.new(
+    artist_name: "Mr Oizo",
+    user: charles
+  )
+mroizo_avatar_url = "https://culturebox.francetvinfo.fr/sites/default/files/assets/images/2017/06/maxnewsspecial093147.jpg"
+mroizo.remote_avatar_url = mroizo_avatar_url
+mroizo.save!
+
+puts "create #{mroizo.artist_name}"
+
+breakbot = Dj.new(
+    artist_name: "Breakbot",
+    user: matt
+  )
+breakbot_avatar_url = "https://storage.googleapis.com/images.frenchmorning.com/2018/02/breakbot-696x378.jpg"
+breakbot.remote_avatar_url = breakbot_avatar_url
+breakbot.save!
+
+puts "create #{breakbot.artist_name}"
+
+uffie = Dj.new(
+    artist_name: "Uffie",
+    user: matt
+  )
+uffie_avatar_url = "http://stoneyroads.com/wp-content/uploads/2017/09/uffie.jpg"
+uffie.remote_avatar_url = uffie_avatar_url
+uffie.save!
+
+puts "create #{uffie.artist_name}"
+
+mehdi = Dj.new(
+    artist_name: "Dj Mehdi",
+    user: charles
+  )
+mehdi_avatar_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/DJ_Mehdi.jpg/260px-DJ_Mehdi.jpg"
+mehdi.remote_avatar_url = mehdi_avatar_url
+mehdi.save!
+
+puts "create #{mehdi.artist_name}"
+
