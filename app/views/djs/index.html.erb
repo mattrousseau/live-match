@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <% @djs.each do |dj| %>
+      <div class="col-xs-12 col-sm-4 col-md-3">
+        <%= render 'shared/card', dj: dj %>
+      </div>
+  <% end %>
+    </div>
+</div>

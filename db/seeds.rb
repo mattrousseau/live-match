@@ -209,61 +209,64 @@ Dj.destroy_all
 
 puts "Creating 4 Djs"
 
+4.times do
 
-mroizo = Dj.new(
-    artist_name: "Mr Oizo",
-    user: matt
-  )
+  mroizo = Dj.new(
+      artist_name: "Mr Oizo",
+      user: matt
+    )
 
-url1 = "http://lavagueparallele.com/wp-content/uploads/2016/10/mr-oizo-church-album.jpg"
-url2 = "http://sat.qc.ca/sites/default/files/styles/opengraph_facebook/public/oizo_banner_perso_640x4001.jpg"
+  url1 = "http://lavagueparallele.com/wp-content/uploads/2016/10/mr-oizo-church-album.jpg"
+  url2 = "http://sat.qc.ca/sites/default/files/styles/opengraph_facebook/public/oizo_banner_perso_640x4001.jpg"
 
-mroizo.remote_photos_urls = [url1, url2]
-mroizo.save!
+  mroizo.remote_photos_urls = [url1, url2]
+  mroizo.save!
 
-puts "created #{mroizo.artist_name}"
-
-
-breakbot = Dj.new(
-    artist_name: "Breakbot",
-    user: charles
-  )
-
-url1 = "https://storage.googleapis.com/images.frenchmorning.com/2018/02/breakbot-696x378.jpg"
-url2 = "https://i.ytimg.com/vi/t9_1oDgTV90/maxresdefault.jpg"
-
-breakbot.remote_photos_urls = [url1, url2]
-breakbot.save!
-
-puts "created #{breakbot.artist_name}"
+  puts "created #{mroizo.artist_name}"
 
 
-uffie = Dj.new(
-    artist_name: "Uffie",
-    user: paul
-  )
+  breakbot = Dj.new(
+      artist_name: "Breakbot",
+      user: charles
+    )
 
-url1 = "https://www.residentadvisor.net/images/features/2006/sonar-uffie.jpg"
-url2 = "https://i.ytimg.com/vi/HVpir5vSA78/maxresdefault.jpg"
+  url1 = "https://storage.googleapis.com/images.frenchmorning.com/2018/02/breakbot-696x378.jpg"
+  url2 = "https://i.ytimg.com/vi/t9_1oDgTV90/maxresdefault.jpg"
 
-uffie.remote_photos_urls = [url1, url2]
-uffie.save!
+  breakbot.remote_photos_urls = [url1, url2]
+  breakbot.save!
 
-puts "created #{uffie.artist_name}"
+  puts "created #{breakbot.artist_name}"
 
 
-mehdi = Dj.new(
-    artist_name: "Dj Mehdi",
-    user: pierre
-  )
+  uffie = Dj.new(
+      artist_name: "Uffie",
+      user: pierre
+    )
 
-url1 = "https://statics.lesinrocks.com/content/thumbs/uploads/2018/04/width-1125-height-612-srcset-1/dj-mehdi-2.jpg"
-url2 = "http://www.greenroom.fr/wp-content/uploads/2016/09/tumblr_mvmg7u8eVE1s1opj3o1_1280-e1473780589188.jpg"
+  url1 = "https://www.residentadvisor.net/images/features/2006/sonar-uffie.jpg"
+  url2 = "https://i.ytimg.com/vi/HVpir5vSA78/maxresdefault.jpg"
 
-mehdi.remote_photos_urls = [url1, url2]
-mehdi.save!
+  uffie.remote_photos_urls = [url1, url2]
+  uffie.save!
 
-puts "created #{mehdi.artist_name}"
+  puts "created #{uffie.artist_name}"
+
+
+  mehdi = Dj.new(
+      artist_name: "Dj Mehdi",
+      user: paul
+    )
+
+  url1 = "https://statics.lesinrocks.com/content/thumbs/uploads/2018/04/width-1125-height-612-srcset-1/dj-mehdi-2.jpg"
+  url2 = "http://www.greenroom.fr/wp-content/uploads/2016/09/tumblr_mvmg7u8eVE1s1opj3o1_1280-e1473780589188.jpg"
+
+  mehdi.remote_photos_urls = [url1, url2]
+  mehdi.save!
+
+  puts "created #{mehdi.artist_name}"
+
+end
 
 
 
@@ -276,7 +279,7 @@ Booking.destroy_all
 
 boom = Booking.create!(
     venue: tiger,
-    dj: mroizo,
+    dj: Dj.first,
     duration: 3,
     booking_date: Date.new(2018, 12, 10),
     comment: "La boom du Tigre"
@@ -286,7 +289,7 @@ puts "created #{boom.comment.downcase} au #{boom.venue.name} avec #{boom.dj.arti
 
 apero = Booking.create!(
     venue: tiger,
-    dj: mehdi,
+    dj: Dj.second,
     duration: 4.5,
     booking_date: Date.new(2018, 11, 20),
     comment: "Apéro dinatoire entre jeunes privilégiés"
@@ -294,7 +297,7 @@ apero = Booking.create!(
 
 diner = Booking.create!(
     venue: baron,
-    dj: uffie,
+    dj: Dj.third,
     duration: 2,
     booking_date: Date.new(2018, 12, 10),
     comment: "Diner branché"
@@ -302,7 +305,7 @@ diner = Booking.create!(
 
 google = Booking.create!(
     venue: baron,
-    dj: mroizo,
+    dj: Dj.fourth,
     duration: 1,
     booking_date: Date.new(2018, 12, 10),
     comment: "Evenement privé Google"

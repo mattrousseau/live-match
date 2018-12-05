@@ -1,0 +1,11 @@
+<div class="main-search">
+  <div class="search-box">
+    <%= form_tag djs_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Où ? Paris, 34400..."
+      %>
+    <% end %>
+  </div>
+</div>
