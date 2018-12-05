@@ -10,17 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_05_175209) do
+ActiveRecord::Schema.define(version: 2018_12_05_213132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "venue_id"
+    t.bigint "dj_id"
+    t.date "booking_date"
+    t.float "duration"
+    t.text "comment"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dj_id"], name: "index_bookings_on_dj_id"
+    t.index ["venue_id"], name: "index_bookings_on_venue_id"
+  end
+
   create_table "djs", force: :cascade do |t|
     t.string "artist_name"
-    t.string "avatar"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "photos"
     t.index ["user_id"], name: "index_djs_on_user_id"
   end
 
@@ -32,6 +45,7 @@ ActiveRecord::Schema.define(version: 2018_12_05_175209) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -40,13 +54,6 @@ ActiveRecord::Schema.define(version: 2018_12_05_175209) do
     t.string "name"
     t.text "description"
     t.string "photo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "venuephotos", force: :cascade do |t|
-    t.string "photo"
-    t.string "tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -61,29 +68,23 @@ ActiveRecord::Schema.define(version: 2018_12_05_175209) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "category"
+    t.json "photos"
     t.index ["user_id"], name: "index_venues_on_user_id"
   end
 
   create_table "venues_equipments", force: :cascade do |t|
     t.bigint "venue_id"
     t.bigint "venueequipment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["venue_id"], name: "index_venues_equipments_on_venue_id"
     t.index ["venueequipment_id"], name: "index_venues_equipments_on_venueequipment_id"
   end
 
-  create_table "venues_photos", force: :cascade do |t|
-    t.bigint "venue_id"
-    t.bigint "venuephoto_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["venue_id"], name: "index_venues_photos_on_venue_id"
-    t.index ["venuephoto_id"], name: "index_venues_photos_on_venuephoto_id"
-  end
-
+  add_foreign_key "bookings", "djs"
+  add_foreign_key "bookings", "venues"
   add_foreign_key "djs", "users"
   add_foreign_key "venues", "users"
   add_foreign_key "venues_equipments", "venueequipments"
   add_foreign_key "venues_equipments", "venues"
-  add_foreign_key "venues_photos", "venuephotos"
-  add_foreign_key "venues_photos", "venues"
 end

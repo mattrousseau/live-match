@@ -1,23 +1,63 @@
+require 'date'
+
+puts "----------------------------"
+puts "USERS"
+
 puts "Destroying all users"
 User.destroy_all
 
-puts "Creating 2 users"
+puts "Creating 4 users"
 
-matt = User.create!(
+matt = User.new(
     email: "matt@gmail.com",
-    password: "123456"
+    password: "123456",
   )
+matt_avatar_url = "https://culturebox.francetvinfo.fr/sites/default/files/assets/images/2017/06/maxnewsspecial093147.jpg"
+matt.remote_avatar_url = matt_avatar_url
+
+matt.save!
+
 puts "created #{matt.email}"
 
-charles = User.create!(
+
+charles = User.new(
     email: "charles@gmail.com",
     password: "123456"
   )
+charles_avatar_url = "https://storage.googleapis.com/images.frenchmorning.com/2018/02/breakbot-696x378.jpg"
+charles.remote_avatar_url = charles_avatar_url
+
+charles.save!
+
 puts "created #{charles.email}"
 
 
+paul = User.new(
+    email: "paul@gmail.com",
+    password: "123456"
+  )
+paul_avatar_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/DJ_Mehdi.jpg/260px-DJ_Mehdi.jpg"
+paul.remote_avatar_url = paul_avatar_url
+
+paul.save!
+
+puts "created #{paul.email}"
+
+
+pierre = User.new(
+    email: "pierre@gmail.com",
+    password: "123456"
+  )
+pierre_avatar_url = "http://stoneyroads.com/wp-content/uploads/2017/09/uffie.jpg"
+pierre.remote_avatar_url = pierre_avatar_url
+
+pierre.save!
+
+puts "created #{pierre.email}"
+
 
 puts "----------------------------"
+puts "VENUES"
 
 puts "Destroying all venues"
 Venue.destroy_all
@@ -38,6 +78,16 @@ Vous avez la possibilité de réserver quelques tables, de privatiser l'espace d
   )
 puts "created #{tiger.name}"
 
+url1 = "https://s3-eu-west-1.amazonaws.com/privateaser-media/etab_photos/953/1500x750/10226.jpg"
+url2 = "https://s3-eu-west-1.amazonaws.com/privateaser-media/etab_photos/953/1500x750/10227.jpg"
+url3 = "https://s3-eu-west-1.amazonaws.com/privateaser-media/etab_photos/953/1500x750/10228.jpg"
+
+tiger.remote_photos_urls = [url1, url2, url3]
+tiger.save!
+
+puts "added photos to #{tiger.name}"
+
+
 
 baron = Venue.create!(
     name: "Le Baron",
@@ -52,107 +102,19 @@ Le restaurant Café Le Baron se propose aussi de vous accueillir pour tous vos �
   )
 puts "created #{baron.name}"
 
-
-
-puts "----------------------------"
-
-puts "Destroying all Venues photos"
-Venuephoto.destroy_all
-
-puts "Creating Tiger Photos"
-
-url1 = "https://s3-eu-west-1.amazonaws.com/privateaser-media/etab_photos/953/1500x750/10226.jpg"
-url2 = "https://s3-eu-west-1.amazonaws.com/privateaser-media/etab_photos/953/1500x750/10227.jpg"
-url3 = "https://s3-eu-west-1.amazonaws.com/privateaser-media/etab_photos/953/1500x750/10228.jpg"
-
-tiger_image_1 = Venuephoto.new(
-  tag: "main"
-  )
-tiger_image_1.remote_photo_url = url1
-tiger_image_1.save!
-
-tiger_image_2 = Venuephoto.new(
-  tag: "secondary"
-  )
-tiger_image_2.remote_photo_url = url2
-tiger_image_2.save!
-
-
-tiger_image_3 = Venuephoto.new(
-  tag: "wine"
-  )
-tiger_image_3.remote_photo_url = url3
-tiger_image_3.save!
-
-puts "Creating Le Baron Photos"
-
 url1 = "https://s3-eu-west-1.amazonaws.com/privateaser-media/etab_photos/550/1500x750/45504.jpg"
 url2 = "https://s3-eu-west-1.amazonaws.com/privateaser-media/etab_photos/550/1500x750/8250.jpg"
 url3 = "https://s3-eu-west-1.amazonaws.com/privateaser-media/etab_photos/550/1500x750/45013.jpg"
 
-lebaron_image_1 = Venuephoto.new(
-  tag: "main"
-  )
-lebaron_image_1.remote_photo_url = url1
-lebaron_image_1.save!
+baron.remote_photos_urls = [url1, url2, url3]
+baron.save!
 
-lebaron_image_2 = Venuephoto.new(
-  tag: "secondary"
-  )
-lebaron_image_2.remote_photo_url = url2
-lebaron_image_2.save!
-
-
-lebaron_image_3 = Venuephoto.new(
-  tag: "wine"
-  )
-lebaron_image_3.remote_photo_url = url3
-lebaron_image_3.save!
+puts "added photos to #{baron.name}"
 
 
 
 puts "----------------------------"
-
-puts "Linking photos to venues"
-
-puts "Linking Tiger Photos"
-
-VenuesPhoto.create!(
-    venuephoto: tiger_image_1,
-    venue: tiger
-  )
-
-VenuesPhoto.create!(
-    venuephoto: tiger_image_2,
-    venue: tiger
-  )
-
-VenuesPhoto.create!(
-    venuephoto: tiger_image_3,
-    venue: tiger
-  )
-
-puts "Linking Le Baron Photos"
-
-VenuesPhoto.create!(
-    venuephoto: lebaron_image_1,
-    venue: baron
-  )
-
-VenuesPhoto.create!(
-    venuephoto: lebaron_image_2,
-    venue: baron
-  )
-
-VenuesPhoto.create!(
-    venuephoto: lebaron_image_3,
-    venue: baron
-  )
-
-
-
-
-puts "----------------------------"
+puts "EQUIPMENTS"
 
 puts "Destroying all equipments"
 Venueequipment.destroy_all
@@ -238,50 +200,111 @@ VenuesEquipment.create!(
 
 
 puts "----------------------------"
+puts "DJs"
+
 
 puts "Destroying all djs"
 Dj.destroy_all
+
 
 puts "Creating 4 Djs"
 
 
 mroizo = Dj.new(
     artist_name: "Mr Oizo",
-    user: charles
+    user: matt
   )
-mroizo_avatar_url = "https://culturebox.francetvinfo.fr/sites/default/files/assets/images/2017/06/maxnewsspecial093147.jpg"
-mroizo.remote_avatar_url = mroizo_avatar_url
+
+url1 = "http://lavagueparallele.com/wp-content/uploads/2016/10/mr-oizo-church-album.jpg"
+url2 = "http://sat.qc.ca/sites/default/files/styles/opengraph_facebook/public/oizo_banner_perso_640x4001.jpg"
+
+mroizo.remote_photos_urls = [url1, url2]
 mroizo.save!
 
-puts "create #{mroizo.artist_name}"
+puts "created #{mroizo.artist_name}"
+
 
 breakbot = Dj.new(
     artist_name: "Breakbot",
-    user: matt
+    user: charles
   )
-breakbot_avatar_url = "https://storage.googleapis.com/images.frenchmorning.com/2018/02/breakbot-696x378.jpg"
-breakbot.remote_avatar_url = breakbot_avatar_url
+
+url1 = "https://storage.googleapis.com/images.frenchmorning.com/2018/02/breakbot-696x378.jpg"
+url2 = "https://i.ytimg.com/vi/t9_1oDgTV90/maxresdefault.jpg"
+
+breakbot.remote_photos_urls = [url1, url2]
 breakbot.save!
 
-puts "create #{breakbot.artist_name}"
+puts "created #{breakbot.artist_name}"
+
 
 uffie = Dj.new(
     artist_name: "Uffie",
-    user: matt
+    user: paul
   )
-uffie_avatar_url = "http://stoneyroads.com/wp-content/uploads/2017/09/uffie.jpg"
-uffie.remote_avatar_url = uffie_avatar_url
+
+url1 = "https://www.residentadvisor.net/images/features/2006/sonar-uffie.jpg"
+url2 = "https://i.ytimg.com/vi/HVpir5vSA78/maxresdefault.jpg"
+
+uffie.remote_photos_urls = [url1, url2]
 uffie.save!
 
-puts "create #{uffie.artist_name}"
+puts "created #{uffie.artist_name}"
+
 
 mehdi = Dj.new(
     artist_name: "Dj Mehdi",
-    user: charles
+    user: pierre
   )
-mehdi_avatar_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/DJ_Mehdi.jpg/260px-DJ_Mehdi.jpg"
-mehdi.remote_avatar_url = mehdi_avatar_url
+
+url1 = "https://statics.lesinrocks.com/content/thumbs/uploads/2018/04/width-1125-height-612-srcset-1/dj-mehdi-2.jpg"
+url2 = "http://www.greenroom.fr/wp-content/uploads/2016/09/tumblr_mvmg7u8eVE1s1opj3o1_1280-e1473780589188.jpg"
+
+mehdi.remote_photos_urls = [url1, url2]
 mehdi.save!
 
-puts "create #{mehdi.artist_name}"
+puts "created #{mehdi.artist_name}"
+
+
+
+puts "----------------------------"
+puts "BOOKINGs"
+
+
+puts "Destroying all bookings"
+Booking.destroy_all
+
+boom = Booking.create!(
+    venue: tiger,
+    dj: mroizo,
+    duration: 3,
+    booking_date: Date.new(2018, 12, 10),
+    comment: "La boom du Tigre"
+  )
+
+puts "created #{boom.comment.downcase} au #{boom.venue.name} avec #{boom.dj.artist_name}"
+
+apero = Booking.create!(
+    venue: tiger,
+    dj: mehdi,
+    duration: 4.5,
+    booking_date: Date.new(2018, 11, 20),
+    comment: "Apéro dinatoire entre jeunes privilégiés"
+  )
+
+diner = Booking.create!(
+    venue: baron,
+    dj: uffie,
+    duration: 2,
+    booking_date: Date.new(2018, 12, 10),
+    comment: "Diner branché"
+  )
+
+google = Booking.create!(
+    venue: baron,
+    dj: mroizo,
+    duration: 1,
+    booking_date: Date.new(2018, 12, 10),
+    comment: "Evenement privé Google"
+  )
 

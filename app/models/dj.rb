@@ -1,7 +1,8 @@
 class Dj < ApplicationRecord
   belongs_to :user
-  mount_uploader :avatar, PhotoUploader
+  has_many :bookings, dependent: :destroy
+  mount_uploaders :photos, PhotoUploader
 
   validates :artist_name, presence: true
-  validates :avatar, presence: true
+  validates :user, presence: true
 end
