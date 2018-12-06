@@ -5,8 +5,9 @@
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 .banner h1 {
   font-size: 50px;
@@ -25,4 +26,10 @@
   font-weight: bold;
   opacity: 0;
   font-size: 200px;
+}
+#banner-typed-text { /* Text Styling */
+  font-family: "Avenir";
+  font-weight: lighter;
+  font-size: 35px;
+  opacity: 0.6;
 }

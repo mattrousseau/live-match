@@ -1,1 +1,14 @@
 // Specific CSS for your home-page
+.stretch {
+  height: 50vh;
+  background-color: black;
+  margin-bottom: 10px;
+}
+
+.typed-cursor{
+    font-size: 25px;
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
