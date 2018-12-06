@@ -1,11 +1,23 @@
-<div class="main-search">
-  <div class="search-box">
-    <%= form_tag djs_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Où ? Paris, 34400..."
-      %>
+<div class="container" style="width: 800px;">
+  <span>
+    <%= form_tag djs_path, method: :get, class:"form-inline" do %>
+    <div class="form-group search">
+      <ul class="list-inline ul-search">
+        <li class="li-search">
+          <p class="p-title">Lieu</p>
+        </li>
+        <li>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control select",
+            placeholder: "Paris, Rennes, 75011..."
+          %>
+        </li>
+        <li class="li-search">
+          <%= submit_tag "Trouver", class: "btn-search" %>
+        </li>
+      </ul>
+    </div>
     <% end %>
-  </div>
+  </span>
 </div>

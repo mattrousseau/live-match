@@ -213,7 +213,10 @@ puts "Creating 4 Djs"
 
   mroizo = Dj.new(
       artist_name: "Mr Oizo",
-      user: matt
+      user: matt,
+      description: "Quentin Dupieux est un artiste de musique électronique, réalisateur et scénariste français, né le 14 avril 1974 à Paris. Il utilise, pour son œuvre musicale, le pseudonyme de Mr. Oizo.
+      Quentin Dupieux est le fils d'un garagiste1.
+      Il fait ses premières armes de réalisateur dans l'équipe de tournage de clips Midi-Minuit de Michel Gondry, et signe sur le label FCom/PIAS de musique électronique sous le pseudo de Mr. Oizo, à la suite de sa rencontre avec Laurent Garnier."
     )
 
   url1 = "http://lavagueparallele.com/wp-content/uploads/2016/10/mr-oizo-church-album.jpg"
@@ -227,7 +230,12 @@ puts "Creating 4 Djs"
 
   breakbot = Dj.new(
       artist_name: "Breakbot",
-      user: charles
+      user: charles,
+      description: "Breakbot, de son vrai nom Thibaut Berland, est un DJ et compositeur de musique électronique né le 5 octobre 1981 dans les Yvelines signé sur le label français Ed Banger Records.
+      Proche du groupe Justice, il a remixé leur morceau Let There Be Light, et a collaboré au graphisme de l'artwork de l'album du groupe2.
+      En 2005, il réalise un court métrage d'animation intitulé Overtime avec Oury Atlan et Damien Ferrie dans le cadre de ses études à Supinfocom Valenciennes.
+      En 2007, il sort son premier EP Happy Rabbit sur le label londonien Moshi Moshi Records.
+      Enfin, en mai 2009, il est annoncé qu'il rejoint le label Ed Banger Records."
     )
 
   url1 = "https://storage.googleapis.com/images.frenchmorning.com/2018/02/breakbot-696x378.jpg"
@@ -241,7 +249,11 @@ puts "Creating 4 Djs"
 
   uffie = Dj.new(
       artist_name: "Uffie",
-      user: pierre
+      user: pierre,
+      description: "Uffie, de son vrai nom Anna Catherine Hartley-Poole, née le 9 décembre 1987 à Miami, en Floride, est une chanteuse de musique électronique américaine basée à Paris.
+      Uffie est née à Miami, en Floride1, sous le nom d'Anna-Catherine Hartley. Sa mère est japonaise et son père est britannique originaire de Liverpool2,3. Sa famille est partie avec elle à Hong Kong quand elle avait quatre ans4. Elle y a passé une bonne partie de son enfance et de son adolescence2.
+      Elle est arrivée à Paris à 15 ans5. Son nom de scène Uffie vient du surnom œuf donné par son père lorsqu'elle était enfant6.
+      En 2006, elle commence sa carrière par la production de deux singles Pop the Glock et Ready To Uff en cocréation avec son ami Louisdub sur le label français Ed Banger Records. Les deux titres contiennent une musique empruntant aussi bien à l'acid house et à l'ambient qu'au rap pour la partie vocale. Les titres d'Uffie ont été produits par les artistes français Mr. Oizo et Feadz. SebastiAn a réalisé plusieurs remixes."
     )
 
   url1 = "https://www.residentadvisor.net/images/features/2006/sonar-uffie.jpg"
@@ -255,7 +267,10 @@ puts "Creating 4 Djs"
 
   mehdi = Dj.new(
       artist_name: "Dj Mehdi",
-      user: paul
+      user: paul,
+      description: "DJ Mehdi, de son vrai nom Mehdi Faveris-Essadi, (né le 20 janvier 1977 à Asnières-sur-Seine dans les Hauts-de-Seine et mort le 13 septembre 2011 à Paris2,3,4), est un producteur de musique et compositeur de hip-hop et de musique électronique français.
+      DJ Mehdi est né à Asnières-sur-Seine dans les Hauts-de-Seine5,2, d'une mère tunisienne et d'un père français. Il débute en 1992 en intégrant Ideal J, groupe formé par Kery James, auquel il contribue en tant que compositeur5. En 1996, les Ideal J publient leur premier album O'riginal MC's sur une mission mais c'est sur l'album suivant, Le combat continue, publié en 19985, que Mehdi affirme sa patte de producteur, ajoutant de vibrantes orchestrations aux breakbeats qui caractérisent son style1. Avant cela, un an plus tôt ,en 1997, DJ Mehdi fonde le label Espionnage5.
+      Il devient par la suite membre du collectif Mafia K'1 Fry, et en produit la quasi-totalité des créations telles que Different Teep (ex-groupe de Manu Key, Mista Flo et Lil Jahson), les solos de Karlito ou de Manu Key. Mais son travail le plus reconnu se fera avec le 113, et l'album Les Princes de la ville qui décrochera deux Victoires de la Musique en 20006,7,8,9."
     )
 
   url1 = "https://statics.lesinrocks.com/content/thumbs/uploads/2018/04/width-1125-height-612-srcset-1/dj-mehdi-2.jpg"
@@ -287,6 +302,7 @@ boom = Booking.create!(
 
 puts "created #{boom.comment.downcase} au #{boom.venue.name} avec #{boom.dj.artist_name}"
 
+
 apero = Booking.create!(
     venue: tiger,
     dj: Dj.second,
@@ -294,6 +310,9 @@ apero = Booking.create!(
     booking_date: Date.new(2018, 11, 20),
     comment: "Apéro dinatoire entre jeunes privilégiés"
   )
+
+puts "created #{apero.comment.downcase} au #{apero.venue.name} avec #{apero.dj.artist_name}"
+
 
 diner = Booking.create!(
     venue: baron,
@@ -303,6 +322,9 @@ diner = Booking.create!(
     comment: "Diner branché"
   )
 
+puts "created #{diner.comment.downcase} au #{diner.venue.name} avec #{diner.dj.artist_name}"
+
+
 google = Booking.create!(
     venue: baron,
     dj: Dj.fourth,
@@ -310,4 +332,6 @@ google = Booking.create!(
     booking_date: Date.new(2018, 12, 10),
     comment: "Evenement privé Google"
   )
+
+puts "created #{google.comment.downcase} au #{google.venue.name} avec #{google.dj.artist_name}"
 

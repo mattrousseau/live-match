@@ -12,3 +12,11 @@
     -moz-animation: blink 0.7s infinite;
     animation: blink 0.7s infinite;
 }
+.features {
+  margin-top: 200px;
+  width: 300px;
+}
+
+.container {
+  min-height: calc(100vh - 100px - 70vh - 70px);
+}

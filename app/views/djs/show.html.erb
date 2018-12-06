@@ -1,0 +1,39 @@
+
+ <div class="dj-banner">
+  <div style="background-image:url(<%= @dj.photos.last.url %>); height: 50vh; width: 100%; background-size: cover;  background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;">
+  </div>
+</div>
+
+
+<div class="container dj-show">
+  <div class="important-info">
+
+    <div class="primary-info">
+      <div class="title">
+        <h1><%= @dj.artist_name %></h1>
+      </div>
+      <div class="dj-info ">
+        <p><%= @dj.description %></p>
+      </div>
+    </div>
+
+    <div class="genre-info">
+
+    </div>
+
+  </div>
+
+  <div class="booking">
+    <div class="form-wrapper" style="width: 300px; margin: 0 auto;">
+        <%= simple_form_for :search, method: "get" do |f| %>
+          <h3>Booking</h3>
+          <%= f.input :starts_at, as: :string, required: false, input_html: {class: "datepicker"} %>
+          <%= f.input :ends_at, as: :string, required: false, input_html: {class: "datepicker"} %>
+          <%= f.button :submit, "Book", class: "btn btn-primary btn-booking" %>
+        <% end %>
+      </div>
+
+  </div>
+</div>
