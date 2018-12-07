@@ -6,7 +6,7 @@
   background-size: cover !important;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   background-color: white;
   overflow: hidden;
 }
@@ -40,5 +40,5 @@
   color: #1A4343;
 }
 .banner-headphone {
-  margin-left: 200px;
+  // margin-left: 200px;
 }

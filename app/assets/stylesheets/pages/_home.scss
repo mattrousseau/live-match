@@ -1,6 +1,6 @@
 // Specific CSS for your home-page
 .stretch {
-  height: 50vh;
+  height: 30vh;
   background-color: black;
   margin-bottom: 10px;
 }
@@ -19,4 +19,27 @@
 
 .container {
   min-height: calc(100vh - 100px - 70vh - 70px);
+}
+.univers {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),url('univers.jpg');
+  height: 200px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  // background-size: cover;
+}
+.univers h2 {
+  color: white;
+  font-family: 'Avenir';
+  font-weight: bold;
+}
+i.fas.fa-circle::before {
+  color: #1BD0CF;
+  font-weight: bold;
+  font-size: 7px;
+  margin-left: 3px;
 }
