@@ -19,8 +19,14 @@
 }
 
 /* Logo */
+.navbar-wagon-brand.small img {
+  height: 20px;
+  transition: all 0.3s ease;
+}
 .navbar-wagon-brand img {
   height: 50px;
+  transition: all 0.3s ease;
+
 }
 
 /* User Avatar */
