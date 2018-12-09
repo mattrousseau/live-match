@@ -1,7 +1,7 @@
 .banner {
   // color: #1A4343;
   // text-align: center;
-  height: 70vh;
+  height: 60vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
@@ -11,7 +11,7 @@
   overflow: hidden;
 }
 .banner-content {
-  width: 600px;
+  width: 650px;
   padding-left: 100px;
 }
 .banner img {
@@ -20,6 +20,8 @@
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
   color: #1A4343;
   margin-bottom: 50px;
+  // margin-left: 50px;
+  margin-right: -50px;
 }
 .banner p {
   font-size: 25px;
@@ -36,13 +38,20 @@
 }
 #banner-typed-text { /* Text Styling */
   font-family: "Avenir";
-  font-weight: lighter;
-  font-size: 35px;
-  opacity: 0.6;
+  font-weight: bold;
+  font-size: 32px;
+  opacity: 1;
   color: #1A4343;
 }
 .banner-headphone {
   padding-right: 100px;
+  padding-top: 300px;
+}
+
+@media(max-width: 975px) {
+  .banner-content {
+    padding-left: 50px;
+  }
 }
 
 @media(max-width: 900px) {
@@ -50,6 +59,23 @@
     display: none;
   }
   #banner-typed-text {
-    font-size: 20px;
+    font-size: 24px;
+  }
+  .banner {
+    justify-content: space-around;
+    height: 300px;
+  }
+  .banner-headphone {
+  padding-right: 0;
+  padding-top: 0px;
+  }
+  .banner-content {
+    padding: 0px;
+    width: auto;
+  }
+  .banner-content img {
+    padding: 0px;
+    width: 300px;
+    margin: 0px;
   }
 }
